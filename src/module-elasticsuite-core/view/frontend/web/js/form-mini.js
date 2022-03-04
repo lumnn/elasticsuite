@@ -34,7 +34,8 @@ define([
             responseFieldElements: 'dl dd',
             selectClass: 'selected',
             submitBtn: 'button[type="submit"]',
-            searchLabel: '[data-role=minisearch-label]'
+            searchLabel: '[data-role=minisearch-label]',
+            requestDebounceWait: 250
         },
 
         /**
@@ -315,7 +316,7 @@ define([
                 this._updateAriaHasPopup(false);
                 this.element.removeAttr('aria-activedescendant');
             }
-        }, 250),
+        }, this.options.requestDebounceWait),
 
         /**
          * Executes when keys are pressed in the search input field. Performs specific actions
